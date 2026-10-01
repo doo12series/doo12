@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://doo12series.github.io/doo12/sitemap.xml
+Sitemap: https://doo12.pages.dev/sitemap.xml
