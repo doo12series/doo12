@@ -637,6 +637,10 @@
         .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
     }
 
+    function pathHref(value) {
+      return String(value == null ? "" : value).split("/").map(encodeURIComponent).join("/");
+    }
+
     function card(item) {
       var tags = "";
       var cats = item.c || [];
@@ -645,7 +649,7 @@
         ? '<img src="' + esc(item.i) + '" alt="' + esc(item.t) + '" loading="lazy" width="300" height="450" />'
         : '<span class="noimg">' + esc((item.t || "?").slice(0, 1)) + "</span>";
       var ep = item.n > 0 ? item.n + " ตอน" : "ซีรีส์ตอนสั้น";
-      return '<article class="card"><a class="card-link" href="' + esc(item.p) + '">'
+      return '<article class="card"><a class="card-link" href="' + esc(pathHref(item.p)) + '">'
         + '<div class="thumb">' + thumb + "</div>"
         + '<div class="body"><h3>' + esc(item.t) + "</h3><p class="ep">" + esc(ep) + "</p>"
         + (tags ? '<p class="tags">' + tags + "</p>" : "") + "</div></a></article>";
